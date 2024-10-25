@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import cellMockup from "@/assets/cell.png"; 
+import { Services } from "../services/services";
 
 export function Home() {
   return (
@@ -63,6 +64,10 @@ export function Home() {
         >
           <img src={cellMockup} alt="Mockup do celular" className="w-[640px] md:w-[520px]" />
         </motion.div>
+      </div>
+
+      <div className="flex flex-col mt-24 mb-24">
+        <Services />
       </div>
     </div>
   );
