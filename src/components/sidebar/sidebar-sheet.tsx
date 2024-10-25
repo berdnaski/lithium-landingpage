@@ -47,7 +47,7 @@ export function SidebarSheet({ onToggle, onScrollToSection }: SidebarSheetProps)
       }, 300); 
     }
   };
-  
+
   return (
     <Sheet open={isOpen} onOpenChange={handleToggle}> 
       <SheetTrigger asChild>
@@ -77,10 +77,7 @@ export function SidebarSheet({ onToggle, onScrollToSection }: SidebarSheetProps)
                 className="justify-start gap-2 hover:bg-purple-500 text-white font-semibold" 
                 variant="ghost"
                 onClick={() => {
-                  if (onScrollToSection) {
-                    onScrollToSection(item.id); // Usando onScrollToSection se disponível
-                  }
-                  handleClose(); // Fechar o sidebar após a seleção
+                  handleScrollToSection(item.id); // Usando a função local para manipular o scroll
                 }}
               >
                 {item.icon}
