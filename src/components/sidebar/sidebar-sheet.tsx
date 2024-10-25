@@ -12,7 +12,7 @@ import { motion } from "framer-motion";
 
 interface SidebarSheetProps {
   onToggle?: (isVisible: boolean) => void; 
-  onScrollToSection?: (id: string) => void; // Mantendo esta propriedade
+  onScrollToSection?: (id: string) => void; 
 }
 
 export function SidebarSheet({ onToggle, onScrollToSection }: SidebarSheetProps) {
@@ -76,12 +76,7 @@ export function SidebarSheet({ onToggle, onScrollToSection }: SidebarSheetProps)
               <Button 
                 className="justify-start gap-2 hover:bg-purple-500 text-white font-semibold" 
                 variant="ghost"
-                onClick={() => {
-                  if (onScrollToSection) {
-                    onScrollToSection(item.id); // Usando a prop para manipular o scroll
-                  }
-                  handleClose(); // Fechar o sidebar após a seleção
-                }}
+                onClick={() => handleScrollToSection(item.id)} // Usando a função local
               >
                 {item.icon}
                 {item.label}
