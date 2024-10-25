@@ -12,10 +12,10 @@ import { motion } from "framer-motion";
 
 interface SidebarSheetProps {
   onToggle?: (isVisible: boolean) => void; 
-  onScrollToSection?: (id: string) => void; 
+  onScrollToSection?: (id: string) => void; // Mantido para manipular o scroll
 }
 
-export function SidebarSheet({ onToggle }: SidebarSheetProps) {
+export function SidebarSheet({ onToggle, onScrollToSection }: SidebarSheetProps) {
   const [isOpen, setIsOpen] = useState(false); 
 
   useEffect(() => {
@@ -77,7 +77,10 @@ export function SidebarSheet({ onToggle }: SidebarSheetProps) {
                 className="justify-start gap-2 hover:bg-purple-500 text-white font-semibold" 
                 variant="ghost"
                 onClick={() => {
-                  handleScrollToSection(item.id); 
+                  if (onScrollToSection) {
+                    onScrollToSection(item.id); 
+                  }
+                  handleClose(); 
                 }}
               >
                 {item.icon}
