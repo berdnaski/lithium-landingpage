@@ -12,12 +12,11 @@ import { motion } from "framer-motion";
 
 interface SidebarSheetProps {
   onToggle?: (isVisible: boolean) => void; 
-  onScrollToSection: (id: string) => void; 
+  onScrollToSection?: (id: string) => void; 
 }
 
-export function SidebarSheet({ onToggle, onScrollToSection }: SidebarSheetProps) {
+export function SidebarSheet({ onToggle }: SidebarSheetProps) {
   const [isOpen, setIsOpen] = useState(false); 
-  const [scrollPosition, setScrollPosition] = useState(0);
 
   useEffect(() => {
     if (onToggle) {
@@ -33,25 +32,19 @@ export function SidebarSheet({ onToggle, onScrollToSection }: SidebarSheetProps)
     setIsOpen(false); 
   };
 
-  const handleOpen = () => {
-    setScrollPosition(window.scrollY); // Armazenar a posição de rolagem
-    setIsOpen(true);
-  };
-
   const handleScrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
       const scrollOptions: ScrollToOptions = {
-        top: element.offsetTop, // Posição do elemento
-        behavior: 'smooth', // Comportamento suave
+        top: element.offsetTop, 
+        behavior: 'smooth',
       };
 
-      handleClose(); // Fechar o modal primeiro
+      handleClose(); 
 
-      // Usar setTimeout para rolar após um pequeno atraso
       setTimeout(() => {
         window.scrollTo(scrollOptions);
-      }, 300); // Ajuste o tempo conforme necessário
+      }, 300); 
     }
   };
   
@@ -83,7 +76,9 @@ export function SidebarSheet({ onToggle, onScrollToSection }: SidebarSheetProps)
               <Button 
                 className="justify-start gap-2 hover:bg-purple-500 text-white font-semibold" 
                 variant="ghost"
-                onClick={() => handleScrollToSection(item.id)}
+                onClick={() => {
+                  handleScrollToSection(item.id); 
+                }}
               >
                 {item.icon}
                 {item.label}
