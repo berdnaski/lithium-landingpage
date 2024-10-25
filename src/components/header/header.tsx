@@ -1,4 +1,5 @@
 import { SidebarSheet } from "../sidebar/sidebar-sheet";
+import { motion } from "framer-motion";
 
 interface HeaderProps {
   className?: string;
@@ -21,28 +22,33 @@ export function Header({ className = "", onMenuToggle }: HeaderProps) {
         </div>
 
         <ul className="hidden md:flex flex-col md:flex-row gap-4 text-white font-semibold text-xl cursor-pointer">
-          <li className="relative ml-4 group">
-            Home
-            <span className="absolute left-0 bottom-0 h-1 w-0 bg-[#F165AC] transition-all duration-300 ease-in-out group-hover:w-full"></span>
-          </li>
-          <li className="relative ml-4 group">
-            About
-            <span className="absolute left-0 bottom-0 h-1 w-0 bg-[#F165AC] transition-all duration-300 ease-in-out group-hover:w-full"></span>
-          </li>
-          <li className="relative ml-4 group">
-            Services
-            <span className="absolute left-0 bottom-0 h-1 w-0 bg-[#F165AC] transition-all duration-300 ease-in-out group-hover:w-full"></span>
-          </li>
-          <li className="relative ml-4 group">
-            Contact
-            <span className="absolute left-0 bottom-0 h-1 w-0 bg-[#F165AC] transition-all duration-300 ease-in-out group-hover:w-full"></span>
-          </li>
+          {["Home", "About", "Services", "Contact"].map((item) => (
+            <li key={item} className="relative ml-4 group">
+              {item}
+              <span className="absolute left-0 bottom-0 h-1 w-0 bg-[#F165AC] transition-all duration-300 ease-in-out group-hover:w-full"></span>
+            </li>
+          ))}
         </ul>
 
-        <div className="hidden md:flex items-center"> {/* Centraliza o botão também */}
-          <button className="ml-4 rounded-2xl bg-[#9949FF] h-10 w-44 border-none font-semibold text-white transition-all duration-300 ease-in-out hover:bg-purple-600 shadow-xl">
+        <div className="hidden md:flex items-center"> 
+          <motion.button
+            className="ml-4 rounded-2xl bg-[#9949FF] h-10 w-44 border-none font-semibold text-white transition-shadow duration-300 ease-in-out hover:bg-purple-600 shadow-xl"
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)"
+            }}
+            whileTap={{ 
+              scale: 0.95, 
+              boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.2)" 
+            }}
+            transition={{ 
+              type: "spring", 
+              stiffness: 300, 
+              damping: 20
+            }}
+          >
             Fale Conosco
-          </button>
+          </motion.button>
         </div>
       </div>
     </div>
