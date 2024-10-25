@@ -40,7 +40,7 @@ export function SidebarSheet({ onToggle, onScrollToSection }: SidebarSheetProps)
         behavior: 'smooth',
       };
 
-      handleClose(); 
+      handleClose(); // Fechar o sidebar após a seleção
 
       setTimeout(() => {
         window.scrollTo(scrollOptions);
@@ -78,9 +78,9 @@ export function SidebarSheet({ onToggle, onScrollToSection }: SidebarSheetProps)
                 variant="ghost"
                 onClick={() => {
                   if (onScrollToSection) {
-                    onScrollToSection(item.id); 
+                    onScrollToSection(item.id); // Usando onScrollToSection se disponível
                   }
-                  handleClose(); 
+                  handleClose(); // Fechar o sidebar após a seleção
                 }}
               >
                 {item.icon}
