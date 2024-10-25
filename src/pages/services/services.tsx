@@ -67,8 +67,8 @@ export function Services() {
             className="flex"
             drag="x"
             dragConstraints={{ right: 0, left: -width }}
-            dragElastic={0.2} // Controla a elasticidade do movimento
-            transition={{ type: "spring", stiffness: 300, damping: 30 }} // Transição suave
+            dragElastic={0.2} 
+            transition={{ type: "spring", stiffness: 300, damping: 30 }} 
           >
             {cards.map((card, index) => (
               <motion.div key={index} className="flex-shrink-0 md:w-[500px] w-[300px] h-full p-[14px]">

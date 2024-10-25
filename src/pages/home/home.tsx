@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import cellMockup from "@/assets/cell.png"; 
 import { Services } from "../services/services";
+import { Depoiments } from "../depoiments/depoiments";
 
 export function Home() {
   return (
@@ -68,6 +69,10 @@ export function Home() {
 
       <div className="flex flex-col mt-24 mb-24">
         <Services />
+      </div>
+
+      <div className="mb-24 flex flex-col">
+        <Depoiments />
       </div>
     </div>
   );
