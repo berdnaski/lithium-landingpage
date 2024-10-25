@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button"; 
-import { Link } from "react-router-dom"; 
 import {
   Sheet,
   SheetContent,
@@ -7,66 +6,90 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { BookUser, Contact, House, MenuIcon,  Store } from "lucide-react";
-import { useEffect } from "react";
+import { BookUser, Contact, House, MenuIcon, Store } from "lucide-react";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 interface SidebarSheetProps {
   onToggle?: (isVisible: boolean) => void; 
+  onScrollToSection: (id: string) => void; 
 }
 
-export function SidebarSheet({ onToggle }: SidebarSheetProps) {
+export function SidebarSheet({ onToggle, onScrollToSection }: SidebarSheetProps) {
+  const [isOpen, setIsOpen] = useState(false); 
+  const [scrollPosition, setScrollPosition] = useState(0);
+
   useEffect(() => {
     if (onToggle) {
-      onToggle(true); 
+      onToggle(isOpen); 
     }
+  }, [onToggle, isOpen]);
 
-    return () => {
-      if (onToggle) {
-        onToggle(false);
-      }
-    };
-  }, [onToggle]);
+  const handleToggle = () => {
+    setIsOpen((prev) => !prev);
+  };
 
+  const handleClose = () => {
+    setIsOpen(false); 
+  };
+
+  const handleOpen = () => {
+    setScrollPosition(window.scrollY); // Armazenar a posição de rolagem
+    setIsOpen(true);
+  };
+
+  const handleScrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const scrollOptions: ScrollToOptions = {
+        top: element.offsetTop, // Posição do elemento
+        behavior: 'smooth', // Comportamento suave
+      };
+
+      handleClose(); // Fechar o modal primeiro
+
+      // Usar setTimeout para rolar após um pequeno atraso
+      setTimeout(() => {
+        window.scrollTo(scrollOptions);
+      }, 300); // Ajuste o tempo conforme necessário
+    }
+  };
+  
   return (
-    <Sheet>
+    <Sheet open={isOpen} onOpenChange={handleToggle}> 
       <SheetTrigger asChild>
         <Button size="icon" variant="outline" className="bg-purple-700 border-black hover:bg-purple-600">
           <MenuIcon />
         </Button>
       </SheetTrigger>
-      <SheetContent className="bg-[#121212] border-l-purple-300 text-white">
+      <SheetContent className="bg-[#1E1E1E] border-l-purple-300 text-white">
         <SheetHeader>
           <SheetTitle className="text-left text-purple-300 font-bold">Lithium</SheetTitle>
         </SheetHeader>
 
         <div className="flex flex-col gap-2 py-5">
-          <Link to="/about">
-            <Button className="justify-start gap-2 hover:bg-purple-300 textwhite font-semibold" variant="ghost">
-              <House size={18} />
-              Home
-            </Button>
-          </Link>
-
-          <Link to="/projects">
-            <Button className="justify-start gap-2 hover:bg-purple-300 textwhite font-semibold" variant="ghost">
-              <Store size={18} />
-              Product
-            </Button>
-          </Link>
-
-          <Link to="/contact">
-            <Button className="justify-start gap-2 hover:bg-purple-300 textwhite font-semibold" variant="ghost">
-              <BookUser size={18} />
-              About
-            </Button>
-          </Link>
-
-          <Link to="/services">
-            <Button className="justify-start gap-2 hover:bg-purple-300 textwhite font-semibold" variant="ghost">
-              <Contact size={18} />
-              Contact
-            </Button>
-          </Link>
+          {[
+            { id: "home", icon: <House size={18} />, label: "Home" },
+            { id: "services", icon: <Store size={18} />, label: "Services" },
+            { id: "depoiments", icon: <BookUser size={18} />, label: "Depoiments" },
+            { id: "contact", icon: <Contact size={18} />, label: "Contact" },
+          ].map((item, index) => (
+            <motion.div 
+              key={item.label}
+              initial={{ opacity: 0, x: -20 }} 
+              animate={{ opacity: 1, x: 0 }} 
+              transition={{ duration: 0.3, delay: index * 0.1 }}
+            >
+              <Button 
+                className="justify-start gap-2 hover:bg-purple-500 text-white font-semibold" 
+                variant="ghost"
+                onClick={() => handleScrollToSection(item.id)}
+              >
+                {item.icon}
+                {item.label}
+              </Button>
+            </motion.div>
+          ))}
         </div>
       </SheetContent>
     </Sheet>

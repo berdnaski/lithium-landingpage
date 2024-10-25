@@ -6,16 +6,15 @@ import depo3 from "@/assets/depo3.png";
 import depo4 from "@/assets/depo4.png";
 
 export function Depoiments() {
-  // Animação para as imagens
   const imageVariants = {
-    hidden: { opacity: 0, y: 20 }, // Estado inicial
-    visible: { opacity: 1, y: 0 }, // Estado final
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
   };
 
   return (
-    <div className="flex flex-col w-full justify-center items-center text-center gap-8">
+    <div id="depoiments" className="flex flex-col w-full justify-center items-center text-center gap-8">
       <div>
-        <Button className="bg-[#334139] hover:bg-[#334122] font-bold text-white border-none text-lg rounded-full shadow-md transition-shadow hover:shadow-lg">
+        <Button className="bg-gradient-to-r from-[#181818] to-[#6E00D2] text-white hover:opacity-90 md:text-lg rounded-full shadow-md transition-shadow hover:shadow-lg">
           Depoimentos
         </Button>
       </div>

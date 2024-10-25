@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { SidebarSheet } from "../sidebar/sidebar-sheet";
 import { motion } from "framer-motion";
 
@@ -7,6 +8,13 @@ interface HeaderProps {
 }
 
 export function Header({ className = "", onMenuToggle }: HeaderProps) {
+  const handleScroll = useCallback((id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, []);
+
   return (
     <div className={`flex flex-col md:flex-row w-full md:h-24 h-16 items-center border-b-2 border-b-zinc-500 ${className}`}>
       <div className="flex flex-col md:flex-row max-w-[85%] h-full w-full mx-auto justify-between md:items-center">
@@ -16,16 +24,25 @@ export function Header({ className = "", onMenuToggle }: HeaderProps) {
           </h1>
 
           <div className="md:hidden"> 
-            <SidebarSheet onToggle={onMenuToggle} />
+            <SidebarSheet onToggle={onMenuToggle} onScrollToSection={handleScroll} />
           </div>
-
         </div>
 
         <ul className="hidden md:flex flex-col md:flex-row gap-4 text-white font-semibold text-xl cursor-pointer">
-          {["Home", "About", "Services", "Contact"].map((item) => (
-            <li key={item} className="relative ml-4 group">
-              {item}
-              <span className="absolute left-0 bottom-0 h-1 w-0 bg-[#F165AC] transition-all duration-300 ease-in-out group-hover:w-full"></span>
+          {[
+            { label: "Home", id: "home" },
+            { label: "Services", id: "services" },
+            { label: "Depoiments", id: "depoiments" },
+            { label: "Contact", id: "contact" },
+          ].map((item) => (
+            <li key={item.label} className="relative ml-4 group">
+              <button 
+                className="flex items-center"
+                onClick={() => handleScroll(item.id)} 
+              >
+                {item.label}
+                <span className="absolute left-0 bottom-0 h-1 w-0 bg-[#F165AC] transition-all duration-300 ease-in-out group-hover:w-full"></span>
+              </button>
             </li>
           ))}
         </ul>
