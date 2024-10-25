@@ -12,10 +12,9 @@ import { motion } from "framer-motion";
 
 interface SidebarSheetProps {
   onToggle?: (isVisible: boolean) => void; 
-  onScrollToSection?: (id: string) => void; // Mantido para manipular o scroll
 }
 
-export function SidebarSheet({ onToggle, onScrollToSection }: SidebarSheetProps) {
+export function SidebarSheet({ onToggle }: SidebarSheetProps) {
   const [isOpen, setIsOpen] = useState(false); 
 
   useEffect(() => {
