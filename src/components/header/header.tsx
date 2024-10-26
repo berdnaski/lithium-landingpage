@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 import { SidebarSheet } from "../sidebar/sidebar-sheet";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 interface HeaderProps {
   className?: string;
@@ -48,6 +49,7 @@ export function Header({ className = "", onMenuToggle }: HeaderProps) {
         </ul>
 
         <div className="hidden md:flex items-center"> 
+        <Link to="https://wa.link/oh1f9p" target="_blank">
           <motion.button
             className="ml-4 rounded-2xl bg-[#9949FF] h-10 w-44 border-none font-semibold text-white transition-shadow duration-300 ease-in-out hover:bg-purple-600 shadow-xl"
             whileHover={{ 
@@ -66,6 +68,7 @@ export function Header({ className = "", onMenuToggle }: HeaderProps) {
           >
             Fale Conosco
           </motion.button>
+        </Link>
         </div>
       </div>
     </div>

@@ -5,6 +5,7 @@ import { Services } from "../services/services";
 import { Depoiments } from "../depoiments/depoiments";
 import { Contact } from "../contact/contact";
 import { ChevronUp } from 'lucide-react'; // Importe o ícone de seta para cima
+import { Link } from "react-router-dom";
 
 export function Home() {
   // Função para rolar até o topo
@@ -38,20 +39,22 @@ export function Home() {
         </motion.p>
 
         <div>
-          <motion.div
-            whileHover={{
-              scale: 1.05,
-              boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)",
-            }}
-            transition={{
-              duration: 0.3,
-              ease: "easeInOut",
-            }}
-          >
-            <Button className="bg-gradient-to-r from-[#181818] to-[#6E00D2] text-white hover:opacity-90 md:text-lg rounded-full shadow-md transition-shadow hover:shadow-lg">
-              Vamos Conversar?
-            </Button>
-          </motion.div>
+          <Link to="https://wa.link/oh1f9p">
+            <motion.div
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)",
+              }}
+              transition={{
+                duration: 0.3,
+                ease: "easeInOut",
+              }}
+            >
+              <Button className="bg-gradient-to-r from-[#181818] to-[#6E00D2] text-white hover:opacity-90 md:text-lg rounded-full shadow-md transition-shadow hover:shadow-lg">
+                Vamos Conversar?
+              </Button>
+            </motion.div>
+          </Link>
         </div>
 
         <motion.div
@@ -74,7 +77,7 @@ export function Home() {
         </motion.div>
       </div>
 
-      <div className="flex flex-col mt-24 md:mb-24">
+      <div className="flex flex-col mt-24 mb-0 md:mb-24">
         <Services />
       </div>
 

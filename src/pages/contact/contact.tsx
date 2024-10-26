@@ -2,6 +2,7 @@ import banner from "@/assets/banner.png";
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, ArrowRight, Instagram, Linkedin, MessageCircle } from "lucide-react"; 
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 export function Contact() {
   return (
@@ -35,9 +36,10 @@ export function Contact() {
               Impulsione <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-600">seu negócio!</span>
             </motion.h1>
           </div>
-
           <motion.a 
-            href="#" 
+            href="https://wa.link/oh1f9p" 
+            target="_blank" 
+            rel="noopener noreferrer"
             className="mt-8 text-[#D8D8D8] mb-8 text-xl hover:underline flex items-center font-semibold"
             initial={{ opacity: 0, y: -20 }} 
             animate={{ opacity: 1, y: 0 }} 
@@ -83,15 +85,11 @@ export function Contact() {
             </motion.div>
             <div className="flex items-center">
               <Instagram className="mr-2 text-[#D8D8D8]" />
-              <a href="#" className="text-[#D8D8D8] hover:underline">Instagram</a>
+              <a href="https://www.instagram.com/lithiumtch/" className="text-[#D8D8D8] hover:underline">Instagram</a>
             </div>
             <div className="flex items-center">
               <Linkedin className="mr-2 text-[#D8D8D8]" />
               <a href="#" className="text-[#D8D8D8] hover:underline">LinkedIn</a>
-            </div>
-            <div className="flex items-center">
-              <MessageCircle className="mr-2 text-[#D8D8D8]" />
-              <a href="#" className="text-[#D8D8D8] hover:underline">WhatsApp</a>
             </div>
           </div>
         </div>
@@ -103,11 +101,8 @@ export function Contact() {
           <a href="#" className="text-[#D8D8D8] hover:underline">
             <Linkedin />
           </a>
-          <a href="#" className="text-[#D8D8D8] hover:underline">
+          <a href="https://www.instagram.com/lithiumtch/" className="text-[#D8D8D8] hover:underline">
             <Instagram />
-          </a>
-          <a href="#" className="text-[#D8D8D8] hover:underline">
-            <MessageCircle />
           </a>
         </div>
       </div>

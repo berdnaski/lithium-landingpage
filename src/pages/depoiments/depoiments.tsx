@@ -21,13 +21,13 @@ export function Depoiments() {
 
       <div className="flex gap-4 mx-auto max-w-7xl w-full">
         <motion.h1
-          className="md:text-7xl mx-auto font-bold text-white text-2xl text-center"
+          className="md:text-7xl mx-auto font-bold text-white text-3xl text-center"
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6 }}
         >
           Veja o depoimento dos
-          <div className="mt-2">
+          <div className="">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-600 inline">
               nossos clientes
             </span>
@@ -45,7 +45,7 @@ export function Depoiments() {
             initial="hidden"
             animate="visible"
             variants={imageVariants}
-            transition={{ duration: 0.6, delay: index * 0.2 }} // Delay para sequencialmente
+            transition={{ duration: 0.6, delay: index * 0.2 }} 
           />
         ))}
       </div>
