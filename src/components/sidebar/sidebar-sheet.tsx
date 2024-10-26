@@ -1,3 +1,4 @@
+// sidebar-sheet.tsx
 import { Button } from "@/components/ui/button"; 
 import {
   Sheet,
@@ -24,10 +25,6 @@ export function SidebarSheet({ onToggle }: SidebarSheetProps) {
     }
   }, [onToggle, isOpen]);
 
-  const handleToggle = () => {
-    setIsOpen((prev) => !prev);
-  };
-
   const handleClose = () => {
     setIsOpen(false); 
   };
@@ -47,9 +44,9 @@ export function SidebarSheet({ onToggle }: SidebarSheetProps) {
       }, 300); 
     }
   };
-  
+
   return (
-    <Sheet open={isOpen} onOpenChange={handleToggle}> 
+    <Sheet open={isOpen} onOpenChange={() => setIsOpen((prev) => !prev)}> 
       <SheetTrigger asChild>
         <Button size="icon" variant="outline" className="bg-purple-700 border-black hover:bg-purple-600">
           <MenuIcon />
@@ -66,12 +63,12 @@ export function SidebarSheet({ onToggle }: SidebarSheetProps) {
             { id: "services", icon: <Store size={18} />, label: "Services" },
             { id: "depoiments", icon: <BookUser size={18} />, label: "Depoiments" },
             { id: "contact", icon: <Contact size={18} />, label: "Contact" },
-          ].map((item, index) => (
+          ].map((item) => (
             <motion.div 
               key={item.label}
               initial={{ opacity: 0, x: -20 }} 
               animate={{ opacity: 1, x: 0 }} 
-              transition={{ duration: 0.3, delay: index * 0.1 }}
+              transition={{ duration: 0.3 }}
             >
               <Button 
                 className="justify-start gap-2 hover:bg-purple-500 text-white font-semibold" 
