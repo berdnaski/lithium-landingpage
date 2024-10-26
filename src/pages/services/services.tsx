@@ -28,33 +28,35 @@ export function Services() {
   return (
     <div id="services" className="flex flex-col justify-center items-center text-center gap-8">
       <div>
-        <Button className="bg-gradient-to-r from-[#181818] to-[#6E00D2] text-white hover:opacity-90 font-bold border-none text-lg rounded-full shadow-md transition-shadow hover:shadow-lg">
+        <Button className="bg-gradient-to-r from-[#181818] to-[#6E00D2] text-white hover:opacity-90 md:text-lg rounded-full shadow-md transition-shadow hover:shadow-lg">
           Serviços
         </Button>
       </div>
 
-      <div className="flex flex-col gap-4 mx-auto max-w-7xl">
-        <motion.h1
-          className="md:text-7xl mx-auto font-bold text-white flex flex-col text-2xl text-center"
-          initial={{ y: -50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6 }}
-        >
-          Como vamos impulsionar o sucesso do   
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-600">
-            seu negócio?
-          </span>
-        </motion.h1>
-        
-        <motion.p
-          className="text-[#D8D8D8] md:text-xl text-sm w-[75%] mx-auto text-center"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          Nossa equipe qualificada e experiente está pronta para oferecer soluções personalizadas 
-          que atendem às necessidades do seu negócio.
-        </motion.p>
+      <div className="flex flex-col mx-auto max-w-7xl">
+        <div className="flex flex-col md:flex-row items-center gap-4 mx-auto w-[95%]">
+          <motion.h1
+            className="md:text-7xl font-bold text-white text-2xl text-center md:text-left"
+            initial={{ y: -50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6 }}
+          >
+            Como vamos impulsionar o {" "}   
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-600">
+              seu negócio?
+            </span>
+          </motion.h1>
+          
+          <motion.p
+            className="text-[#D8D8D8] md:text-xl text-sm text-center md:text-left w-[75%]"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            Nossa equipe qualificada e experiente está pronta para oferecer soluções personalizadas 
+            que atendem às necessidades do seu negócio.
+          </motion.p>
+        </div>
       </div>
 
       <div className="relative md:w-full md:max-w-[1200px] md:h-[700px] h-[500px] w-[350px] mx-auto mt-8 overflow-hidden">
