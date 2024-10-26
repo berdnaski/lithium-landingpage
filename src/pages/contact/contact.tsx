@@ -1,8 +1,7 @@
 import banner from "@/assets/banner.png"; 
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, ArrowRight, Instagram, Linkedin, MessageCircle } from "lucide-react"; 
+import { Mail, Phone, ArrowRight, Instagram, Linkedin } from "lucide-react"; 
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
 
 export function Contact() {
   return (
